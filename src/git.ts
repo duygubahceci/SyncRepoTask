@@ -113,7 +113,7 @@ class Git {
 	}
 
   async createPr( title) {
-    const options = getOctokitOptions("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", {
+    const options = getOctokitOptions("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", {
 			throttle: {
 				onRateLimit: (retryAfter, options) => {
 					core.warning(`Request quota exhausted for request ${ options.method } ${ options.url }`)
