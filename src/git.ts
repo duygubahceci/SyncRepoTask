@@ -113,7 +113,7 @@ class Git {
 	}
 
   async createPr( title) {
-    const options = getOctokitOptions("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"
+    const options = getOctokitOptions(context.GITHUB_TOKEN
     // , {
 		// 	throttle: {
 		// 		onRateLimit: (retryAfter, options) => {

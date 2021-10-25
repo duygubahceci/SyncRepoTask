@@ -15979,7 +15979,7 @@ class Git {
     }
     createPr(title) {
         return __awaiter(this, void 0, void 0, function* () {
-            const options = (0, utils_1.getOctokitOptions)("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"
+            const options = (0, utils_1.getOctokitOptions)(config_1.context.GITHUB_TOKEN
             // , {
             // 	throttle: {
             // 		onRateLimit: (retryAfter, options) => {
