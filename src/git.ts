@@ -113,44 +113,45 @@ class Git {
 	}
 
   async createPr( title) {
-    const options = getOctokitOptions("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", {
-			throttle: {
-				onRateLimit: (retryAfter, options) => {
-					core.warning(`Request quota exhausted for request ${ options.method } ${ options.url }`)
+    const options = getOctokitOptions("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"
+    // , {
+		// 	throttle: {
+		// 		onRateLimit: (retryAfter, options) => {
+		// 			core.warning(`Request quota exhausted for request ${ options.method } ${ options.url }`)
 
-					if (options.request.retryCount === 0) {
-						// only retries once
-						core.info(`Retrying after ${ retryAfter } seconds!`)
-						return true
-					}
-				},
-				onAbuseLimit: (retryAfter, options) => {
-					// does not retry, only logs a warning
-					core.warning(`Abuse detected for request ${ options.method } ${ options.url }`)
-				}
-			}
-		})
+		// 			if (options.request.retryCount === 0) {
+		// 				// only retries once
+		// 				core.info(`Retrying after ${ retryAfter } seconds!`)
+		// 				return true
+		// 			}
+		// 		},
+		// 		onAbuseLimit: (retryAfter, options) => {
+		// 			// does not retry, only logs a warning
+		// 			core.warning(`Abuse detected for request ${ options.method } ${ options.url }`)
+		// 		}
+		// 	}}
+    )
 
     const octokit = new Octokit.Octokit(options);
     core.info(`Creating new PR`);
 
-   await octokit.request('POST /repos/{owner}/{repo}/pulls', {
-      owner: 'duyguozkan',
-      repo: 'sync-test',
-      head: 'example',
-      base: 'main'
-    }).then().catch(err=> core.debug(err))
+  //  await octokit.request('POST /repos/{owner}/{repo}/pulls', {
+  //     owner: 'duyguozkan',
+  //     repo: 'sync-test',
+  //     head: 'example',
+  //     base: 'main'
+  //   }).then().catch(err=> core.debug(err))
 
-    const { data } = await octokit.pulls.create({
+    return await octokit.pulls.create({
 			owner: this.repo.user,
 			repo: this.repo.name,
 			title: title,
 			body: 'PR for sync files action',
 			head: this.prBranch,
 			base: 'main'
-		})
+		}).then().catch(err=>core.error(err))
 
-    return data;
+
   }
 
 }

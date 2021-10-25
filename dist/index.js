@@ -15979,39 +15979,39 @@ class Git {
     }
     createPr(title) {
         return __awaiter(this, void 0, void 0, function* () {
-            const options = (0, utils_1.getOctokitOptions)("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", {
-                throttle: {
-                    onRateLimit: (retryAfter, options) => {
-                        core.warning(`Request quota exhausted for request ${options.method} ${options.url}`);
-                        if (options.request.retryCount === 0) {
-                            // only retries once
-                            core.info(`Retrying after ${retryAfter} seconds!`);
-                            return true;
-                        }
-                    },
-                    onAbuseLimit: (retryAfter, options) => {
-                        // does not retry, only logs a warning
-                        core.warning(`Abuse detected for request ${options.method} ${options.url}`);
-                    }
-                }
-            });
+            const options = (0, utils_1.getOctokitOptions)("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"
+            // , {
+            // 	throttle: {
+            // 		onRateLimit: (retryAfter, options) => {
+            // 			core.warning(`Request quota exhausted for request ${ options.method } ${ options.url }`)
+            // 			if (options.request.retryCount === 0) {
+            // 				// only retries once
+            // 				core.info(`Retrying after ${ retryAfter } seconds!`)
+            // 				return true
+            // 			}
+            // 		},
+            // 		onAbuseLimit: (retryAfter, options) => {
+            // 			// does not retry, only logs a warning
+            // 			core.warning(`Abuse detected for request ${ options.method } ${ options.url }`)
+            // 		}
+            // 	}}
+            );
             const octokit = new Octokit.Octokit(options);
             core.info(`Creating new PR`);
-            yield octokit.request('POST /repos/{owner}/{repo}/pulls', {
-                owner: 'duyguozkan',
-                repo: 'sync-test',
-                head: 'example',
-                base: 'main'
-            }).then().catch(err => core.debug(err));
-            const { data } = yield octokit.pulls.create({
+            //  await octokit.request('POST /repos/{owner}/{repo}/pulls', {
+            //     owner: 'duyguozkan',
+            //     repo: 'sync-test',
+            //     head: 'example',
+            //     base: 'main'
+            //   }).then().catch(err=> core.debug(err))
+            return yield octokit.pulls.create({
                 owner: this.repo.user,
                 repo: this.repo.name,
                 title: title,
                 body: 'PR for sync files action',
                 head: this.prBranch,
                 base: 'main'
-            });
-            return data;
+            }).then().catch(err => core.error(err));
         });
     }
 }
