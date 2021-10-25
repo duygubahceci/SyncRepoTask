@@ -41,7 +41,7 @@ try {
   core.debug(context.CONFIG_PATH);
   core.debug(context.GITHUB_TOKEN);
 
- // core.setSecret(context.GITHUB_TOKEN);
+  core.setSecret(context.GITHUB_TOKEN);
 
   while (fs.existsSync(context.TMP_DIR)) {
     context.TMP_DIR = `tmp-${Date.now().toString()}`;

@@ -15776,7 +15776,7 @@ try {
     };
     core.debug(context.CONFIG_PATH);
     core.debug(context.GITHUB_TOKEN);
-    // core.setSecret(context.GITHUB_TOKEN);
+    core.setSecret(context.GITHUB_TOKEN);
     while (fs_extra_1.default.existsSync(context.TMP_DIR)) {
         context.TMP_DIR = `tmp-${Date.now().toString()}`;
         core.info(`TEMP_DIR already exists. Using "${context.TMP_DIR}" now.`);
