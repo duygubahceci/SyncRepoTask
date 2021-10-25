@@ -1,5 +1,5 @@
 {
-  "name": "sync-repo-action-from-scratch",
+  "name": "sync-repo-action-edb",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duyguozkan/sync-repo-action-from-scratch.git"
+    "url": "git+https://github.com/duyguozkan/EDB_SyncRepoTask.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/duyguozkan/sync-repo-action-from-scratch/issues"
+    "url": "https://github.com/duyguozkan/EDB_SyncRepoTask/issues"
   },
-  "homepage": "https://github.com/duyguozkan/sync-repo-action-from-scratch#readme",
+  "homepage": "https://github.com/duyguozkan/EDB_SyncRepoTask#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/exec": "^1.1.0",
