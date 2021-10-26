@@ -101,7 +101,8 @@ class Git {
 
 
   async createPrBranch() {
-		let newBranch = path.join('new', this.repo.name,'branch')
+		//let newBranch = path.join('new', this.repo.name,'branch')
+    let newBranch= 'new'+this.repo.name+'branch';
 		core.debug(`Creating PR Branch ${ newBranch }`)
 		await execCmd(
 			`git checkout -b "${ newBranch }"`,

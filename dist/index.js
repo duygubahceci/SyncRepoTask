@@ -15971,7 +15971,8 @@ class Git {
     }
     createPrBranch() {
         return __awaiter(this, void 0, void 0, function* () {
-            let newBranch = path_1.default.join('new', this.repo.name, 'branch');
+            //let newBranch = path.join('new', this.repo.name,'branch')
+            let newBranch = 'new' + this.repo.name + 'branch';
             core.debug(`Creating PR Branch ${newBranch}`);
             yield (0, helpers_1.execCmd)(`git checkout -b "${newBranch}"`, this.workingDir);
             this.prBranch = newBranch;
