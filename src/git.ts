@@ -147,8 +147,8 @@ class Git {
 			repo: this.repo.name,
 			title: title,
 			body: 'PR for sync files action',
-			head: this.prBranch,
-			base: 'main'
+			head: `${this.repo.user}:${this.prBranch}`,
+			base: `${this.repo.name}:main`,
 		}).then().catch(err=>core.error(err))
 
 
