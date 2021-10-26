@@ -15998,12 +15998,14 @@ class Git {
             );
             const octokit = new Octokit.Octokit(options);
             core.info(`Creating new PR`);
-            //  await octokit.request('POST /repos/{owner}/{repo}/pulls', {
-            //     owner: 'duyguozkan',
-            //     repo: 'sync-test',
-            //     head: 'example',
-            //     base: 'main'
-            //   }).then().catch(err=> core.debug(err))
+            core.info(` head is :${this.repo.user}:${this.prBranch}`);
+            core.info(` base is :${this.repo.name}:main`);
+            yield octokit.request('POST /repos/{owner}/{repo}/pulls', {
+                owner: 'duyguozkan',
+                repo: 'sync-test',
+                head: `${this.repo.user}:${this.prBranch}`,
+                base: 'main'
+            }).then().catch(err => core.debug(err));
             return yield octokit.pulls.create({
                 owner: this.repo.user,
                 repo: this.repo.name,
