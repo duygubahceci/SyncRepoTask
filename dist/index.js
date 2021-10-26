@@ -16003,7 +16003,7 @@ class Git {
             yield octokit.request('POST /repos/{owner}/{repo}/pulls', {
                 owner: this.repo.user,
                 repo: this.repo.name,
-                head: `${this.repo.user}:${this.prBranch}`,
+                head: this.prBranch,
                 base: 'main'
             }).then().catch(err => core.debug(err));
             // return await octokit.pulls.create({
