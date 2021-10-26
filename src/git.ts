@@ -138,17 +138,17 @@ class Git {
       owner: 'duyguozkan',
       repo: 'sync-test',
       head: `${this.repo.user}:${this.prBranch}`,
-      base: 'main'
+      base: `${this.repo.name}:main`
     }).then().catch(err=> core.debug(err))
 
-    return await octokit.pulls.create({
-			owner: this.repo.user,
-			repo: this.repo.name,
-			title: title,
-			body: 'PR for sync files action',
-			head: `${this.repo.user}:${this.prBranch}`,
-			base: `${this.repo.name}:main`,
-		}).then().catch(err=>core.error(err))
+    // return await octokit.pulls.create({
+		// 	owner: this.repo.user,
+		// 	repo: this.repo.name,
+		// 	title: title,
+		// 	body: 'PR for sync files action',
+		// 	head: `${this.repo.user}:${this.prBranch}`,
+		// 	base: `${this.repo.name}:main`,
+		// }).then().catch(err=>core.error(err))
 
 
   }
