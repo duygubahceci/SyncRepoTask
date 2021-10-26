@@ -16001,10 +16001,10 @@ class Git {
             core.info(` head is :${this.repo.user}:${this.prBranch}`);
             core.info(` base is :${this.repo.name}:main`);
             yield octokit.request('POST /repos/{owner}/{repo}/pulls', {
-                owner: 'duyguozkan',
-                repo: 'sync-test',
+                owner: this.repo.user,
+                repo: this.repo.name,
                 head: `${this.repo.user}:${this.prBranch}`,
-                base: `${this.repo.name}:main`
+                base: 'main'
             }).then().catch(err => core.debug(err));
             // return await octokit.pulls.create({
             // 	owner: this.repo.user,
