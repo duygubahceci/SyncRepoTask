@@ -1,6 +1,6 @@
 name: 'Sync Repo Action'
 description: 'GitHub Action to Sync Files Between Repositories.'
-author: 'DuyguOzkan'
+author: 'duygubahceci'
 
 inputs:
   GITHUB_PAT:
